@@ -20,7 +20,7 @@ cron.schedule('*/10 * * * * *', () => {
 
         })
 });
-cron.schedule('*/15 * * * * *', () => {
+cron.schedule('*/15 * * * *', () => {
     console.log('Running speedtest task');
     testSpeed()
         .then((r) => {
