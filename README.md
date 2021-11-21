@@ -17,6 +17,8 @@ These environment variables need to be set:
 - `INFLUX_ORG` InfluxDB organization
 - `INFLUX_BUCKET` InfluxDB bucket name
 - `CLIENT_ID` Client identifier (optional, in case you want to run more instances of this client)
+- `ACCEPT_LICENSE` Accept Ookla EULA, TOS and Privacy policy (true / false)
+- `ACCEPT_GDPR` Accept the Ookla GDPR terms (true / false)
 
 ### Testing procedure
 With default settings this client will do a ping test every 10 seconds and a speed test every 15 minutes.

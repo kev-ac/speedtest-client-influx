@@ -86,7 +86,10 @@ const testPing = async () =>  {
 const testSpeed = async () => {
 
     try {
-        const result = await speedTest();
+        const result = await speedTest({
+            acceptLicense: process.env.ACCEPT_LICENSE ?? false,
+            acceptGdpr: process.env.ACCEPT_GDPR ?? false,
+        });
 
         console.log(result);
         const point = new Point('speedtest')
