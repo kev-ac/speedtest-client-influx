@@ -20,7 +20,7 @@ cron.schedule('*/10 * * * * *', () => {
 
         })
 });
-cron.schedule('*/15 * * * *', () => {
+cron.schedule('*/15 * * * * *', () => {
     console.log('Running speedtest task');
     testSpeed()
         .then((r) => {
@@ -94,8 +94,9 @@ const testSpeed = async () => {
         console.log(result);
         const point = new Point('speedtest')
             .tag('client_id', process.env.CLIENT_ID ?? "default_client")
-            .intField('upstream_bandwidth', result.upload.bandwidth)
-            .intField('downstream_bandwidth', result.download.bandwidth)
+            /* See Issue https://github.com/ddsol/speedtest.net/issues/125#issuecomment-964461980 */
+            .floatField('upstream_bandwidth', result.upload.bandwidth / 125004)
+            .floatField('downstream_bandwidth', result.download.bandwidth / 125004)
             .intField('ping_jitter', result.ping.jitter)
             .intField('ping_latency', result.ping.latency)
             .intField('packet_loss', result.packetLoss)
